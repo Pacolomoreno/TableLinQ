@@ -2,15 +2,23 @@
 
 class Program
 {
+    static Dictionary<string, DogOwnerData> MainDataSrc = new Dictionary<string, DogOwnerData>();
     static void Main(string[] args)
     {
-        const string PathDog2015 = "./data/dogs2015.csv";
-        const string PathDog2016 = "./data/dogs2016.csv";
-        const string PathDog2017 = "./data/dogs2017.csv";
-        const string PathDogSample = "./data/dogSample.csv";
+        // In case of missing data files , launch datafile file selection procedure for ./data/*.csv
+        if (args.Length < 1)
+        {
+            LocalFile show = new LocalFile(Environment.CurrentDirectory + "\\data");
+            args = show.SelectFiles("*.csv").ToArray();
+        }
 
-        var Data2015 = new DogOwnerData(PathDogSample);
-        Data2015.Load(true);
-        // Console.WriteLine(Data2015.GetHashCode());
+        // Loop to charge each csv data file in a list of "DogOwnerData" dataSets called "MainDataSource"
+        foreach (var file in args)
+        {
+            Console.WriteLine(file);
+            DogOwnerData DOdata = new DogOwnerData(file);
+            DOdata.Load(true);
+            MainDataSrc.Add(file, DOdata);
+        }
     }
 }

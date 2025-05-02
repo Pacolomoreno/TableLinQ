@@ -49,6 +49,10 @@ public class DogOwnerData(string path)
             }
 
         }
+        else
+        {
+            Console.WriteLine($"File not found {filePath} !!");
+        }
 
     }
 
