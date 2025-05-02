@@ -30,7 +30,7 @@ public class LocalFile(string filePath)
     public List<string> SelectFiles(string filtro)
     {
         List<string> selection = new List<string>();
-        string answer = "n";
+        string? answer = "n";
         string[] content = Directory.GetFiles(FilePath, filtro);
         for (int i = 0; i < content.Length; i++)
         {

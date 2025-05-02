@@ -17,7 +17,7 @@ class Program
         {
             Console.WriteLine(file);
             DogOwnerData DOdata = new DogOwnerData(file);
-            DOdata.Load(true);
+            DOdata.Load(true); // pass true as param for debug
             MainDataSrc.Add(file, DOdata);
         }
     }

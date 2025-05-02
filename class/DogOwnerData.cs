@@ -8,8 +8,13 @@ public class DogOwnerData(string path)
         LocalFile DogsStringArray = new LocalFile(filePath);
         if (DogsStringArray.Exist())
         {
-            string[] lines = DogsStringArray.Read();
+            string[] lines = DogsStringArray.Read(debug);
             string[] fields = new string[13];
+            if (debug)
+            {
+                Console.WriteLine("Fetching data...");
+                Console.WriteLine("| OwnID | OwnAge | Sex | Dist | Quart | DgMom | DgMom2 | DgDad | DgDad2 | DgType | BirthYear | DgGender | DgColor "); Console.WriteLine("====================================================================================================================");
+            }
 
             foreach (string line in lines)
             {
@@ -18,6 +23,7 @@ public class DogOwnerData(string path)
                 // DEBUGGING LIST OF CONTENT
                 if (debug)
                 {
+
                     foreach (string field in fields)
                     {
                         Console.Write($" | {field}");
