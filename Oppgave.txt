@@ -1,0 +1,27 @@
+Hoy!
+En .csv fil er egentlig bare følgende:
+En standardisert måte å lese strenger på, for å definere rader og kolloner i et rutediagram.
+Hver av radene er et sett med kommaseparerte verdier, hvor hver verdi representerer en verdi i en kollonne.
+Første linjen i filen er det som heter headerlinjen, og hver verdi er navnet på kollonnene.
+Hver linje slutter med en \n (new line karakter), som vi kan bruke å separere/splitte teksten i filen.
+
+Klarer dere å lage en modell av en rad, så lese inn en csvfil og mappe hver rad til et C# objekt?
+Her kan det være lurt å lage en modell for filen, så en modell for hver rad med data i filen.
+
+I denne oppgaven skal vi leke oss med, og lage spørringer mot et csv datasett.
+Velg et valgfritt datasett fra denne siden:
+https://www.kaggle.com/code/rtatman/fun-beginner-friendly-datasetsLinks to an external site.
+Lag et sett med LinQ spørringer mot datasettet:
+
+En Select(), hvor du Selecter en property fra items i datasettet.
+En Where(), hvor du lager et filter i listen din, og kun henter ut items som passerer filteret ditt.
+ 
+
+Utvidet:
+
+Prøv å tenk litt på strukturen i programmet. Kan du dele opp programmet i mindre moduler, som hver har ansvar for sin ting?
+Se om du klarer å lage en Controller, som skal styre input fra bruker til en spørring mot datafeltet.
+
+Lever et github repo som oppgavesvar.
+
+Lykke til!
