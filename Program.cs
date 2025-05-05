@@ -20,5 +20,15 @@ class Program
             DOdata.Load(true); // pass true as param for debug
             MainDataSrc.Add(file, DOdata);
         }
+
+        foreach (var DOD in MainDataSrc)
+        {
+            var DogRaceList = DOD.Value.DogOwnerList.Select(DO => DO.Breed1);
+            foreach (var race in DogRaceList)
+            {
+                Console.WriteLine(race);
+            }
+        }
+
     }
 }
