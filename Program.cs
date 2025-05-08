@@ -17,12 +17,13 @@ class Program
         {
             Console.WriteLine(file);
             DogOwnerData DOdata = new DogOwnerData(file);
-            DOdata.Load(true); // pass true as param for debug
+            DOdata.Load(); // pass true as param for debug
             MainDataSrc.Add(file, DOdata);
         }
 
         foreach (var DOD in MainDataSrc)
         {
+            Console.WriteLine($"Races in {DOD.Key} -->");
             var DogRaceList = DOD.Value.DogOwnerList.Select(DO => DO.Breed1);
             foreach (var race in DogRaceList)
             {
