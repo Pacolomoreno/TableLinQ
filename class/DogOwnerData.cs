@@ -1,9 +1,8 @@
 
-public class DogOwnerData(string path)
+public class DogOwnerData()
 {
-    public string filePath = path;
     public List<DogOwner> DogOwnerList = new List<DogOwner>();
-    public void Load(Boolean debug = false)
+    public void Load(string filePath, Boolean debug = false)
     {
         LocalFile DogsStringArray = new LocalFile(filePath);
         if (DogsStringArray.Exist())
@@ -60,6 +59,42 @@ public class DogOwnerData(string path)
             Console.WriteLine($"File not found {filePath} !!");
         }
 
-    }
 
+    }
+    public void ShowRaces()
+    {
+        var DogRaceList = DogOwnerList.Select(DO => DO.Breed1);
+        foreach (var race in DogRaceList)
+        {
+            Console.Write(race + "\t");
+        }
+
+    }
+    public void SelectRace(string RaceSelected)
+    {
+        var DogRaceList = DogOwnerList.Where(DO => DO.Breed1 == RaceSelected);
+        DogOwnerList = DogRaceList.ToList();
+    }
+    public void Print()
+    {
+        Console.WriteLine("| OwnID | OwnAge | Sex | Dist | Quart | DgMom | DgMom2 | DgDad | DgDad2 | DgType | BirthYear | DgGender | DgColor ");
+        Console.WriteLine("====================================================================================================================");
+        foreach (var line in DogOwnerList)
+        {
+
+            Console.WriteLine($" | {line.OwnerId} | {line.OwnerAgeRange} | {line.OwnerGender} | {line.CityDistrict} | {line.CityQuarter} | {line.Breed1} | {line.Breed1Mix} | {line.Breed2} | {line.Breed2Mix} | {line.Breed_Type} | {line.DogBirthYear} | {line.DogGender} | {line.DogColor} ");
+            Console.WriteLine("____________________________________________________________________________________________________________________");
+        }
+
+    }
+    public void SelectDistrict(String District)
+    {
+        Console.WriteLine($"Selction of records in district {District}");
+        var FilteredList = from DO in DogOwnerList
+
+                           where DO.CityDistrict == Int32.Parse(District)
+
+                           select DO;
+        DogOwnerList = FilteredList.ToList();
+    }
 }

@@ -1,4 +1,6 @@
-﻿namespace TableLinQ;
+﻿using System.Numerics;
+
+namespace TableLinQ;
 
 class Program
 {
@@ -16,19 +18,25 @@ class Program
         foreach (var file in args)
         {
             Console.WriteLine(file);
-            DogOwnerData DOdata = new DogOwnerData(file);
-            DOdata.Load(); // pass true as param for debug
+            DogOwnerData DOdata = new DogOwnerData();
+            DOdata.Load(file); // pass true as param for debug
             MainDataSrc.Add(file, DOdata);
         }
 
         foreach (var DOD in MainDataSrc)
         {
+            string? Input;
             Console.WriteLine($"Races in {DOD.Key} -->");
-            var DogRaceList = DOD.Value.DogOwnerList.Select(DO => DO.Breed1);
-            foreach (var race in DogRaceList)
-            {
-                Console.WriteLine(race);
-            }
+            DOD.Value.ShowRaces();
+            Console.WriteLine("\n Input race to filter");
+            Input = Console.ReadLine();
+            DOD.Value.SelectRace(Input);
+            DOD.Value.Print();
+
+            Console.WriteLine("\n Input district to filter");
+            Input = Console.ReadLine();
+            DOD.Value.SelectDistrict(Input);
+            DOD.Value.Print();
         }
 
     }
