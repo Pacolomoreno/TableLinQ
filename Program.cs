@@ -26,17 +26,31 @@ class Program
         foreach (var DOD in MainDataSrc)
         {
             string? Input;
-            Console.WriteLine($"Races in {DOD.Key} -->");
-            DOD.Value.ShowRaces();
-            Console.WriteLine("\n Input race to filter");
-            Input = Console.ReadLine();
-            DOD.Value.SelectRace(Input);
-            DOD.Value.Print();
+            Console.WriteLine($"Working into the {DOD.Value.DogOwnerList.Count()} data records in file {DOD.Key} -->");
 
-            Console.WriteLine("\n Input district to filter");
+            Console.WriteLine("\n Input race to filter or enter to skip or h to show race posibilities");
             Input = Console.ReadLine();
-            DOD.Value.SelectDistrict(Input);
+            if (Input == "h")
+            {
+                DOD.Value.ShowRaces();
+                Console.WriteLine("\n Input race to filter or enter to skip");
+                Input = Console.ReadLine();
+            }
+            if (!(Input == ""))
+            {
+                DOD.Value.SelectRace(Input);
+                Console.WriteLine($"{DOD.Value.DogOwnerList.Count()} Dogs from the race {Input} where selected");
+            }
+
+            Console.WriteLine("\n Input district to filter or enter to skip");
+            Input = Console.ReadLine();
+            if (!(Input == ""))
+            {
+                DOD.Value.SelectDistrict(Input);
+                Console.WriteLine($"{DOD.Value.DogOwnerList.Count()} Dogs from the district {Input} where selected");
+            }
             DOD.Value.Print();
+            DOD.Value.GroupingRPT();
         }
 
     }

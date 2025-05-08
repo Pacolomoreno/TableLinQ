@@ -97,4 +97,66 @@ public class DogOwnerData()
                            select DO;
         DogOwnerList = FilteredList.ToList();
     }
+
+    public void GroupingRPT()
+    {
+        string? Input;
+        Console.WriteLine("INSERT GROUP FIELD FROM THE FOLLOWING : \n 1 - OwnerId \n 2 - OwnerAgeRange \n 3 - OwnerGender \n 4 - CityDistrict \n 5 - Breed1 \n 6 - Breed_Type \n 7 - DogBirthYear \n 8 - DogGender \n 9 - DogColor ");
+        Input = Console.ReadLine();
+        switch (Input)
+        {
+            case "1":
+                var ListGrp = DogOwnerList.GroupBy(DO => DO.OwnerId);
+                foreach (var item in ListGrp)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            case "2":
+                var ListGrp2 = DogOwnerList.GroupBy(DO => DO.OwnerAgeRange);
+                foreach (var item in ListGrp2)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            case "3":
+                var ListGrp3 = DogOwnerList.GroupBy(DO => DO.OwnerGender);
+                foreach (var item in ListGrp3)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            case "4":
+                var ListGrp4 = DogOwnerList.GroupBy(DO => DO.CityDistrict);
+                foreach (var item in ListGrp4)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            case "5":
+                var ListGrp5 = DogOwnerList.GroupBy(DO => DO.Breed1);
+                foreach (var item in ListGrp5)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            case "6":
+                var ListGrp6 = DogOwnerList.GroupBy(DO => DO.Breed_Type);
+                foreach (var item in ListGrp6)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            case "7":
+                var ListGrp7 = DogOwnerList.GroupBy(DO => DO.DogBirthYear);
+                foreach (var item in ListGrp7)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            case "8":
+                var ListGrp8 = DogOwnerList.GroupBy(DO => DO.DogGender);
+                foreach (var item in ListGrp8)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            case "9":
+                var ListGrp9 = DogOwnerList.GroupBy(DO => DO.DogColor);
+                foreach (var item in ListGrp9)
+                    Console.WriteLine($"After the grouping {item.Key} has {item.Count()} items");
+                break;
+            default:
+                break;
+
+
+        }
+
+
+    }
+
 }
